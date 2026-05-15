@@ -18,13 +18,16 @@ and get expert guidance for creating, reviewing, and improving Ansible automatio
 # Install Lola package manager
 pip install lola-ai
 
-# Clone the repository
+# Install this repository's marketplace
+lola market add ansible-content https://raw.githubusercontent.com/ansible-community/ai-forge/main/lola-market.yml
+
+### alternatively, you can install from a local file:
+### lola market add ansible-content ./lola-market.yml
+
+## Clone the repository
 git clone https://github.com/ansible-community/ai-forge.git
 
-# Install all modules to Claude Code
-lola mod add ./ai-forge/ansible-collection-standards
-lola mod add ./ai-forge/ansible-role
-lola mod add ./ai-forge/ansible-collection-sdlc
+## Install all modules to Claude Code
 lola install ansible-collection-standards -a claude-code
 lola install ansible-role -a claude-code
 lola install ansible-collection-sdlc -a claude-code
@@ -42,6 +45,23 @@ lola install ansible-collection-standards -a claude-code ~
 lola install ansible-role -a claude-code ~
 lola install ansible-collection-sdlc -a claude-code ~
 ```
+
+### Declarative Module Management
+
+To manage the modules recommended for your project declaratively:
+
+1. Install `lola` and this repository's marketplace, as described in the quickstart section.
+2. Create a `.lola-req` file in your project. For example:
+
+    ```
+    # .lola-req - AI context modules for this project
+
+    # Modules from https://raw.githubusercontent.com/ansible-community/ai-forge/main/lola-market.yml
+    @ansible-content/ai-forge/ansible-collection-sdlc
+    @ansible-content/ai-forge/ansible-collection-standards
+    ```
+
+3. Install the modules if needed, `lola sync`
 
 ## Modules
 
@@ -86,7 +106,7 @@ Full lifecycle: commits, PRs, releases, tests.
 - `release` - Guided collection release process
 - `remove-deprecations` - Find and remove overdue deprecations
 - `run-tests` - Run and write tests using ansible-test
-- `sonarcloud-analysis` - Analyse SonarCloud issues and technical debt
+- `sonarcloud-analysis` - Analyze SonarCloud issues and technical debt
 - `next-release` - Calculate next patch/minor/major versions for version_added tags
 - `current-release` - Fetch current release version (helper)
 - `get-branch-changes` - Determine merge-base and changed files (helper)
