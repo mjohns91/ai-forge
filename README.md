@@ -107,12 +107,19 @@ Full lifecycle: commits, PRs, releases, tests.
 - `remove-deprecations` - Find and remove overdue deprecations
 - `run-tests` - Run and write tests using ansible-test
 - `sonarcloud-analysis` - Analyze SonarCloud issues and technical debt
+- `validate-workflows` - Validate GitHub Actions workflows for security issues and best practices
 - `next-release` - Calculate next patch/minor/major versions for version_added tags
 - `current-release` - Fetch current release version (helper)
 - `get-branch-changes` - Determine merge-base and changed files (helper)
 - `get-pr-action-results` - Get GitHub Actions/GitLab CI results and analyze failures (helper)
 - `get-pr-number` - Find PR number for branch (helper)
 - `get-upstream-info` - Determine upstream repository info (helper)
+
+**Commands:**
+
+- `/check-pr-actions` - Check GitHub Actions/GitLab CI status and analyze failures
+- `/check-pr-sonarcloud` - Check SonarCloud analysis results for the current pull request
+- `/validate-workflows` - Validate GitHub Actions workflows for security and compliance
 
 [Full documentation](./ansible-collection-sdlc/README.md)
 

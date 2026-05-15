@@ -42,6 +42,7 @@ lola install ansible-collection-sdlc -a opencode
 - **remove-deprecations** - Find and remediate overdue deprecation warnings with guided removal workflow
 - **run-tests** - Run and write sanity, unit, and integration tests using ansible-test
 - **sonarcloud-analysis** - Fetch and analyse SonarCloud issues for projects or pull requests
+- **validate-workflows** - Validate GitHub Actions workflows for security issues, deprecated actions, untrusted sources, SHA pinning, secret exposure, and permissions
 - **next-release** - Calculate next patch/minor/major release versions for version_added tags following SemVer
 
 #### Helper Skills
@@ -56,6 +57,7 @@ lola install ansible-collection-sdlc -a opencode
 
 - **/check-pr-actions** - Check GitHub Actions/GitLab CI status and analyze failures
 - **/check-pr-sonarcloud** - Check SonarCloud analysis results for the current pull request
+- **/validate-workflows** - Validate GitHub Actions workflows for security and compliance
 
 ### Agents
 
@@ -86,6 +88,8 @@ ansible-collection-sdlc/
 - **gh CLI** (optional) - Used for GitHub/GitLab operations (PRs, releases, upstream detection)
 - **ansible-test** - Used for running sanity, unit, and integration tests
 - **curl** (optional) - Used for fetching SonarCloud analysis results
+- **yq** (v4+, optional) - Used for YAML parsing in workflow validation
+- **jq** (optional) - Used for JSON processing in workflow validation
 
 ## License
 

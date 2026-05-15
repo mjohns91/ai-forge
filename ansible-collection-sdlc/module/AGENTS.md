@@ -14,6 +14,12 @@ Module provides skills and commands for Ansible collection development workflows
   Uses get-pr-number to detect the PR and sonarcloud-analysis to fetch and analyze PR-specific issues.
   Invoke when asked to check SonarCloud for the PR, review static analysis results, or see what code quality issues affect the current PR.
 
+- **/validate-workflows command**: Use the `/validate-workflows` command to validate GitHub Actions workflow files for security issues.
+  Checks action sources against approved lists, detects deprecated/archived repositories, validates SHA pinning, identifies secret exposure,
+  and audits permissions. Supports flags for specific checks (--check-sources, --check-permissions, --check-secrets, --check-actions)
+  and auto-fix mode (--fix). Invoke when asked to validate workflows, check workflow security, review GitHub Actions,
+  or before creating PRs that modify .github/workflows/ files.
+
 ### Skills
 
 - **commit skill**: Use the `commit` skill when you want to create a conventional commit
@@ -57,6 +63,10 @@ Module provides skills and commands for Ansible collection development workflows
 - **next-release skill**: Use the `next-release` skill to calculate next patch/minor/major release versions following SemVer.
   Invoke when asked what version to use for version_added tags or about next release versions.
 
+- **validate-workflows skill**: Use the `validate-workflows` skill to validate GitHub Actions workflows for security issues and best practices.
+  Detects deprecated actions, untrusted sources, missing SHA pins, secret exposure, and permission misconfigurations.
+  Invoke when asked to validate workflows, check GitHub Actions security, or review .github/workflows/ files.
+
 ### Utility Skills
 
 - **current-release skill**: Helper skill that fetches the current release version from git tags/branches or galaxy.yml. Used internally by other skills.
@@ -79,6 +89,8 @@ Module provides skills and commands for Ansible collection development workflows
 - `gh` CLI - Used for GitHub/GitLab operations (PRs, releases, upstream detection)
 - `ansible-test` - Used for running sanity, unit, and integration tests
 - `curl` - Used for fetching SonarCloud analysis results
+- `yq` (v4+) - Used for YAML parsing in workflow validation
+- `jq` - Used for JSON processing in workflow validation
 
 **Required Context:**
 
