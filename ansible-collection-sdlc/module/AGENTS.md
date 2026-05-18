@@ -20,6 +20,28 @@ Module provides skills and commands for Ansible collection development workflows
   with FQCN scopes for Ansible collection content.
   Invoke when the user asks to "commit", "create a commit", or "git commit".
 
+- **configure-sonarcloud-collection skill**: Use the `configure-sonarcloud-collection` skill to add
+  SonarCloud (SonarQube Cloud) to a collection repository: `sonar-project.properties`, GitHub Actions
+  workflow with org `SONAR_TOKEN`, XML coverage at the repo root for Sonar, and README or dedicated docs.
+  The skill includes fork/secret safety and assistant-safe patterns (see Security section inside the
+  skill). Invoke when asked to set up, onboard, or configure SonarCloud/SonarQube analysis for
+  a collection, wire CI for the scanner, or add coverage.xml for Sonar.
+
+- **configure-sonarcloud-coverage skill**: Use the `configure-sonarcloud-coverage` skill for the **second phase**
+  of SonarCloud setup: CI jobs that emit XML coverage, passing `sonar.python.coverage.reportPaths` to the
+  scanner, optional `workflow_run` + artifact flows or reusable **`workflow_call`** Sonar (as in public amazon.aws coverage PRs), aggregator
+  workflows, and README or docs badges. Invoke when Sonar already runs but coverage is missing or when the
+  user asks to mirror amazon.aws-style coverage integration after initial Sonar onboarding.
+
+- **sonarcloud-workflow-templates** (under `module/skills/`): Canonical Sonar workflow and properties
+  templates for the **ansible-collections** GitHub org. Not a standalone skill.
+- Before copying files into a collection repo, read **`sonarcloud-workflow-templates/README.md`** in this
+  module.
+- That README compares **`workflow_run`** vs **`workflow_call`**, documents aggregator **`name: all_green`**,
+  and explains **`coverage*`** artifact patterns vs a single artifact named **`coverage`**. For **`workflow_call`**,
+  also use **`all_green-caller.sonarcloud-job.yml.template`** for the **`sonarcloud`** job in **`all_green_check.yaml`**
+  (explicit **`secrets:`**); live reference: **kubernetes.core** [PR #1124](https://github.com/ansible-collections/kubernetes.core/pull/1124).
+
 - **changelog-fragment skill**: Use the `changelog-fragment` skill to create or update changelog fragments for documenting changes.
   Supports automatic change analysis and PR URL updates.
   Invoke when asked to create a changelog fragment, add a fragment, or update fragments with PR URLs.
