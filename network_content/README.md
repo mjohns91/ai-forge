@@ -31,7 +31,11 @@ lola install network_content -a opencode
 
 ### Skills
 
-None currently defined.
+- **`network-collection-triage`** — Triage bug reports, CI failures, and GitHub issues across
+  Ansible network collections. Supports scan mode (bulk weekly triage with structured JSON and
+  markdown output) and direct mode (single issue deep triage). Includes known network CI failure
+  pattern detection and cross-collection cascade analysis for shared dependencies (netcommon,
+  utils). Requires only `gh` CLI.
 
 ### Commands
 
