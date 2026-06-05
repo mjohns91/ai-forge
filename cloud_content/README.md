@@ -31,7 +31,11 @@ lola install cloud_content -a opencode
 
 ### Skills
 
-None currently defined.
+| Skill | Description |
+|-------|-------------|
+| `aws-terminator-analyze` | Analyze Ansible AWS collection PRs to determine required aws-terminator changes |
+| `aws-terminator-implement` | Implement terminator classes and IAM permissions in aws-terminator repository |
+| `aws-terminator-workflow` | End-to-end orchestrator: analyze → implement → test → PR creation |
 
 ### Commands
 

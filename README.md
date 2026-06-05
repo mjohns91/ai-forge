@@ -67,33 +67,19 @@ To manage the modules recommended for your project declaratively:
 
 ### ansible-collection-standards
 
-Standards and guidelines compliance, scaffolding.
-
-**Skills:**
-
-- `ansible-zen` - Zen of Ansible principles and philosophical code review
-
-**Commands:**
-
-- `/ansible-cop-review` - Review code against Red Hat CoP practices
-- `/ansible-scaffold-collection` - Create new collections
-- `/ansible-collection-standards-inclusion-review` - Review collections for community inclusion
+Standards and guidelines compliance, scaffolding. Includes the `ansible-zen` skill and commands for CoP review, collection scaffolding, and inclusion review.
 
 [Full documentation](./ansible-collection-standards/README.md)
 
 ### ansible-role
 
-Role scaffolding tools.
-
-**Commands:**
-
-- `/ansible-scaffold-role` - Create new roles with interactive builder
+Role scaffolding tools with interactive builders for creating CoP-compliant roles.
 
 [Full documentation](./ansible-role/README.md)
 
 ### ansible-collection-sdlc
 
-Full lifecycle: commits, PRs, releases, tests.
+Full lifecycle: commits, PRs, releases, tests. Includes skills for changelog fragments, conventional commits, PR reviews, releases, testing, and SonarCloud integration.
 
 **Skills:**
 
@@ -106,6 +92,7 @@ Full lifecycle: commits, PRs, releases, tests.
 - `release` - Guided collection release process
 - `remove-deprecations` - Find and remove overdue deprecations
 - `run-tests` - Run and write tests using ansible-test
+- `python-virtual-env` - Create or validate a project-local Python virtual environment for local pip installs and tooling
 - `sonarcloud-analysis` - Analyze SonarCloud issues and technical debt
 - `validate-workflows` - Validate GitHub Actions workflows for security issues and best practices
 - `next-release` - Calculate next patch/minor/major versions for version_added tags
@@ -117,11 +104,14 @@ Full lifecycle: commits, PRs, releases, tests.
 
 **Commands:**
 
-- `/check-pr-actions` - Check GitHub Actions/GitLab CI status and analyze failures
-- `/check-pr-sonarcloud` - Check SonarCloud analysis results for the current pull request
+- `/setup-python-venv` - Set up or validate a project-local Python virtual environment
 - `/validate-workflows` - Validate GitHub Actions workflows for security and compliance
 
 [Full documentation](./ansible-collection-sdlc/README.md)
+
+### All Skills
+
+See **[SKILLS.md](./SKILLS.md)** for the complete auto-generated index of all available skills.
 
 ## What is Lola?
 

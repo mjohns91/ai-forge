@@ -28,35 +28,44 @@ lola install ansible-collection-sdlc -a gemini-cli
 lola install ansible-collection-sdlc -a opencode
 ```
 
+## Configuration (Optional)
+
+Skills work with sensible defaults. For customization, create a configuration file:
+
+```bash
+# Copy the template
+cp ansible-release.conf.template ~/.ansible-release.conf
+
+# Edit with your preferences
+vim ~/.ansible-release.conf
+
+# Source before using skills (or add to your shell profile)
+source ~/.ansible-release.conf
+```
+
+Available configuration options:
+
+- `ANSIBLE_COLLECTIONS_PATH` - Where collections are stored
+- `GITHUB_USERNAME` - Your GitHub username for PRs
+- `SANITY_MODE` - Default sanity test mode (smart/full/changed-only)
+- `AUTO_CREATE_PR` - Automatically create PRs (true/false/prompt)
+- Collection-specific overrides (e.g., `amazon_aws_SANITY_MODE`)
+
+See `ansible-release.conf.template` for all options and documentation.
+
 ## Components
 
 ### Skills
 
-- **changelog-fragment** - Create or update changelog fragments for documenting changes with automatic change analysis
-- **commit** - Create conventional commits with FQCN scopes for Ansible collection content
-- **create-branch** - Create feature branches following project conventions with proper fork workflow setup
-- **create-pr** - Create draft pull requests with pre-flight checks, changelog validation, and automated formatting
-- **implement-sonarcloud-fixes** - Implement fixes for SonarCloud issues with testing and PR creation
-- **pr-review** - Review PRs against project standards and the Ansible Collection Review Checklist
-- **release** - Guide collection releases with automatic version detection from changelog fragments
-- **remove-deprecations** - Find and remediate overdue deprecation warnings with guided removal workflow
-- **run-tests** - Run and write sanity, unit, and integration tests using ansible-test
-- **sonarcloud-analysis** - Fetch and analyse SonarCloud issues for projects or pull requests
-- **validate-workflows** - Validate GitHub Actions workflows for security issues, deprecated actions, untrusted sources, SHA pinning, secret exposure, and permissions
-- **next-release** - Calculate next patch/minor/major release versions for version_added tags following SemVer
+See **[SKILLS.md](../SKILLS.md#ansible-collection-sdlc)** for the complete list of skills in this module.
 
-#### Helper Skills
-
-- **current-release** - Fetch current release version from git tags/branches or galaxy.yml (used by other skills)
-- **get-branch-changes** - Determine merge-base and changed files for current branch, avoiding unrelated changes when behind target (used by other skills)
-- **get-pr-action-results** - Get GitHub Actions/GitLab CI results for PRs and branches, analyze failures, and suggest fixes (used by other skills)
-- **get-pr-number** - Determine pull request number for a branch (used by other skills)
-- **get-upstream-info** - Determine upstream repository information and service identifiers (used by other skills)
+Key skills include: changelog-fragment, commit, create-branch, create-pr, pr-review, release, run-tests, validate-workflows, and SonarCloud integration (configure-sonarcloud-collection, configure-sonarcloud-coverage, sonarcloud-analysis).
 
 ### Commands
 
 - **/check-pr-actions** - Check GitHub Actions/GitLab CI status and analyze failures
 - **/check-pr-sonarcloud** - Check SonarCloud analysis results for the current pull request
+- **/setup-python-venv** - Set up or validate a project-local Python virtual environment
 - **/validate-workflows** - Validate GitHub Actions workflows for security and compliance
 
 ### Agents
@@ -76,7 +85,7 @@ ansible-collection-sdlc/
 ├── README.md           # This file
 └── module/             # Lola-importable content
     ├── AGENTS.md       # Module-level instructions
-    ├── skills/         # Skill folders with SKILL.md
+    ├── skills/         # Skill folders with SKILL.md (includes sonarcloud-workflow-templates/ for canonical CI YAML)
     ├── commands/       # Slash command .md files
     ├── agents/         # Subagent .md files
     └── mcps.json       # MCP server configuration
